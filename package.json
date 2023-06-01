@@ -1,0 +1,26 @@
+{
+  "name": "breads",
+  "version": "1.0.0",
+  "description": "Express Full CRUD with SSR JSX",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Benji250/breads.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Benji250/breads/issues"
+  },
+  "homepage": "https://github.com/Benji250/breads#readme",
+  "dependencies": {
+    "dotenv": "^16.1.3",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
+  }
+}
