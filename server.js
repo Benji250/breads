@@ -18,6 +18,7 @@ app.set('views', __dirname + '/views')
 app.set('view engine', 'jax')
 app.engine('jax', require('express-react-views').createEngine())
 app.use(express.static('public'))
+app.use(express.urlencoded({extend: true}))
 
 // 404 Page
 app.get('*', (req, res) => {
