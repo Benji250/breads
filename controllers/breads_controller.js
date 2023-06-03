@@ -29,8 +29,12 @@ breads.get('/:arrayIndex', (req, res) => {
     }
   })
 
-// CREATE
-breads.post('/', (req, res) => {
+  // CREATE
+breads.post('/', express.urlencoded({extend: true}), (req, res) => {
+  console.req(req.body)
+  if(!req.body.image){
+    req.body.image = 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8NXx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80'
+  }
   if (!req.body.image) {
     req.body.image = 'https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80'
   }
@@ -42,9 +46,5 @@ breads.post('/', (req, res) => {
   Bread.push(req.body)
   res.redirect('/breads')
 })
-
-
-  
-  
 
 module.exports = breads
