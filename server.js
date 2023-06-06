@@ -1,5 +1,7 @@
+//Dependencies
 const express = require('express')
 const app = express()
+const methodOverride = require('method-override')
 
 //CONFIGURATION
 require('dotenv').config()
@@ -13,6 +15,7 @@ app.get('/', (req, res) => {
 
 //MIDDLEWARE
 const breadsController = require('./controllers/breads_controller.js')
+app.use(methodOverride('_method'))
 app.use('/breads', breadsController)
 app.set('views', __dirname + '/views')
 app.set('view engine', 'jax')
