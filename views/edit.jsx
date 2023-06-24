@@ -1,18 +1,18 @@
 const React = require('react')
-const baker = require('../controllers/bakers_controller')
 const Default = require('./layouts/Default')
 
-function New ({bakers}) {
+function Edit ({bread, bakers}) {
     return (
       <Default>
-        <h2>Add a new bread</h2>
-        <form action="/breads" method="POST">
+        <h2>Edit a bread</h2>
+        <form action={`/breads/${bread.id}?_method=PUT`} method="POST">
           <label htmlFor="name">Name</label>
           <input
             type="text"
             name="name"
             id="name"
             required
+            defaultValue={bread.name}
           />
           <label htmlFor="image">Image</label>
           <input
@@ -20,29 +20,29 @@ function New ({bakers}) {
             name="image"
             id="image"/>
             <label htmlFor="baker">Baker</label>
-              <select name="baker" id="baker">
-                {bakers.map((bakers) => {
-                return (
-                  <option value={baker.id} key={baker.id}>{baker.name}</option>
-                )
+              <select name="baker" id="baker" defaultValue={bread.baker}>
+                {bakers.map((baker) => {
+                  return(
+                    <option value={baker.id} key={baker.id}>{baker.name}</option>
+                  )
                 })}
                 
-            </select>
+              </select>
+
+            defaultValue{bread.name}
           <label htmlFor="hasGluten">Has Gluten?</label>
           <input
             type="checkbox"
             name="hasGluten"
             id="hasGluten"
-            defaultChecked
+            // defaultChecked
+            defaultChecked={bread.hasGluten}
           />
           <br />
           <input type="submit"/>
         </form>
-        <div className="backButton">
-            <a href="/breads"><button>Go back to the index</button></a>
-        </div>
       </Default>
     )
 }
 
-module.exports = New
+module.exports = Edit
